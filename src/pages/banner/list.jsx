@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react';
-import { Table, Button, Space, Modal, message } from 'antd';
+import { Table, Button, Space, Modal, Image, message } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { useRequest } from 'umi';
-import CategoryForm from './component/form';
-import { categoryGet, categoryDelete, categoryPut } from '../../api/category';
+import BannerForm from './component/form';
+import { bannerGet, bannerDelete, bannerPut } from '../../api/banner';
 
-export default function StuList() {
+export default function BannerList() {
   const [record, setRecord] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const formRef = useRef();
@@ -19,9 +19,24 @@ export default function StuList() {
       width: 260,
     },
     {
-      title: '分类名称',
-      dataIndex: 'categoryName',
-      key: 'categoryName',
+      title: '活动名称',
+      dataIndex: 'title',
+      key: 'title',
+      align: 'center',
+    },
+    {
+      title: '轮播图片',
+      dataIndex: 'pic',
+      key: 'pic',
+      align: 'center',
+      render: (pic, record) => {
+        return <Image width={120} src={pic} />;
+      },
+    },
+    {
+      title: '活动链接',
+      dataIndex: 'url',
+      key: 'url',
       align: 'center',
     },
     {
@@ -43,7 +58,7 @@ export default function StuList() {
 
   // 发送网络请求
   const { data, loading, run } = useRequest(() => {
-    return categoryGet();
+    return bannerGet();
   });
 
   // 删除
@@ -53,7 +68,7 @@ export default function StuList() {
       content: '您确定删除该条数据吗?',
       icon: <ExclamationCircleOutlined />,
       onOk: async () => {
-        await categoryDelete(record.objectId);
+        await bannerDelete(record.objectId);
         // 调用run方法，再次发送获取列表的请求
         // run(参数)：run方法调用的时候，可以传递参数，参数会被传入useRequest的一个参数回调函数里面
         run();
@@ -66,7 +81,7 @@ export default function StuList() {
   // 更新
   const ok = async (value) => {
     delete value.objectId;
-    await categoryPut(value, record.objectId);
+    await bannerPut(value, record.objectId);
     run();
     message.success('更新成功');
     setIsModalOpen(false);
@@ -98,7 +113,7 @@ export default function StuList() {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <CategoryForm record={record} ref={formRef} ok={ok} />
+        <BannerForm record={record} ref={formRef} ok={ok} />
       </Modal>
     </div>
   );

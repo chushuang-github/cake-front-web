@@ -1,5 +1,6 @@
 // 运行时配置文件 src -> app.jsx
 import { message } from 'antd';
+import './utils/init-leancloud-sdk';
 
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
@@ -21,11 +22,11 @@ const codeMessage = {
 };
 // 全局请求拦截
 const requestInterceptor = (url, options) => {
-  let baseUrl = ''
-  if(url.includes('stu')) {
-    baseUrl = url
-  }else {
-    baseUrl = 'https://qvcbe8gf.lc-cn-n1-shared.com/1.1' + url
+  let baseUrl = '';
+  if (url.includes('stu')) {
+    baseUrl = url;
+  } else {
+    baseUrl = 'https://qvcbe8gf.lc-cn-n1-shared.com/1.1' + url;
   }
   return {
     // 此处可以添加域名前缀，LeanCloud云服务器里面的 REST API 服务器地址

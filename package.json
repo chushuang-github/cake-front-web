@@ -21,11 +21,13 @@
   },
   "dependencies": {
     "@ant-design/pro-layout": "^6.5.0",
+    "leancloud-storage": "^4.13.2",
     "mockjs": "^1.1.0",
     "moment": "^2.29.4",
     "react": "17.x",
     "react-dom": "17.x",
-    "umi": "^3.5.34"
+    "umi": "^3.5.34",
+    "wangeditor": "^4.7.15"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",
