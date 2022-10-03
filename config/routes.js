@@ -8,6 +8,14 @@ export default [
     icon: 'BarChartOutlined',
   },
   {
+    path: '/login',
+    component: '@/pages/login',
+    name: '登录',
+    // layout为false，切换到login路由，对应的组件不是由layout控制的，而是一个单独的页面
+    hideInMenu: true,
+    layout: false,
+  },
+  {
     path: '/stu',
     name: '学员管理',
     icon: 'UsergroupAddOutlined',

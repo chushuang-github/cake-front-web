@@ -1,5 +1,7 @@
 // 运行时配置文件 src -> app.jsx
 import { message } from 'antd';
+import { history } from 'umi';
+import HeaderDropMenu from './component/HeaderDropMenu';
 import './utils/init-leancloud-sdk';
 
 const codeMessage = {
@@ -73,4 +75,35 @@ export const request = {
   errorHandler,
   requestInterceptors: [requestInterceptor],
   responseInterceptors: [responseInterceptor],
+};
+
+// @umijs/plugin-initial-state 插件的运行时配置 (初始化全局数据)
+export async function getInitialState() {
+  let info = JSON.parse(localStorage.getItem('info'));
+  if (!info) {
+    info = {
+      isLogin: false,
+      userInfo: null,
+    };
+  }
+  return info;
+}
+
+// @umijs/plugin-layout 插件的运行时配置
+// 具体有哪些配置，可以去 ProComponents 官方文档里面查看
+// 这里的 initialState 就是 @umijs/plugin-initial-state 插件初始化的全局配置
+export const layout = ({ initialState }) => {
+  return {
+    // 页面切换，进行登录鉴权
+    onPageChange: () => {
+      const { isLogin } = initialState;
+      const { location } = history;
+      // 如果没有登录，重定向到 login
+      if (!isLogin && location.pathname !== '/login') {
+        history.push('/login');
+      }
+    },
+    // 自定义右边顶部的结构 (使用自定义的结构，可以实现退出登录的功能)
+    rightContentRender: () => <HeaderDropMenu />,
+  };
 };
