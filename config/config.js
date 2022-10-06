@@ -22,6 +22,11 @@ export default defineConfig({
   request: {
     dataField: '',
   },
+  // dva配置
+  dva: {
+    immer: true,
+    hmr: false,
+  },
   // 路由配置
   routes,
   fastRefresh: {},

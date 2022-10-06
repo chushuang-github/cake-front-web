@@ -32,11 +32,7 @@ const Login = () => {
     <Row style={{ height: '100vh', background: '#75baec' }}>
       <Col span={8} offset={8}>
         <Spin spinning={loading}>
-          <Card
-            title="请登录"
-            extra={<a href="#">去注册</a>}
-            style={{ marginTop: '150px' }}
-          >
+          <Card title="请登录" style={{ marginTop: '150px' }}>
             <Form
               name="normal_login"
               className="login-form"

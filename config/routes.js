@@ -8,6 +8,12 @@ export default [
     icon: 'BarChartOutlined',
   },
   {
+    path: '/area',
+    name: '配送范围',
+    component: '@/pages/area',
+    icon: 'HeatMapOutlined',
+  },
+  {
     path: '/login',
     component: '@/pages/login',
     name: '登录',
@@ -80,6 +86,40 @@ export default [
         path: '/shop/pub',
         component: '@/pages/shop/pub',
         name: '商品发布',
+      },
+    ],
+  },
+  {
+    path: '/dva',
+    name: '状态管理',
+    icon: 'DatabaseOutlined',
+    routes: [
+      {
+        path: '/dva/a',
+        component: '@/pages/dva/ComponentA',
+        name: '组件A',
+      },
+      {
+        path: '/dva/b',
+        component: '@/pages/dva/ComponentB',
+        name: '组件B',
+      },
+    ],
+  },
+  {
+    path: '/system',
+    name: '系统设置',
+    icon: 'SettingOutlined',
+    routes: [
+      {
+        path: '/system/role',
+        component: '@/pages/system/roleMenu',
+        name: '角色管理',
+      },
+      {
+        path: '/system/user',
+        component: '@/pages/system/userMenu',
+        name: '账号管理',
       },
     ],
   },

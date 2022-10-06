@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>蛋糕管理平台</title>
+</head>
+<body>
+  <!-- 引入高德地图的SDK，使用自己的安全秘钥 和 key -->
+  <!-- 官方文档：https://lbs.amap.com/api/jsapi-v2/guide/abc/prepare -->
+  <script type="text/javascript">
+    window._AMapSecurityConfig = {
+      securityJsCode:'292ede44eef7dab113015cb9de7d1033',
+      zoom: 10
+    }
+  </script>
+  <script
+    src="https://webapi.amap.com/maps?v=1.4.15&key=527dc67fee8615970d3799a74bdf807f&plugin=AMap.MouseTool&plugin=AMap.PolyEditor"
+  ></script>
+  <div id="root"></div>
+</body>
+</html>
